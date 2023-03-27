@@ -38,7 +38,33 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
+function game() {
+    let playerSelection;
+    let numberOfWins = 0;
+    let conclusion;
+    let computerSelection;
+    for (i = 1; i <= 5; i++) {
+        playerSelection = prompt("Input");
+        computerSelection = getComputerChoice();
+        conclusion = playRound(playerSelection, computerSelection);
+        
+        if (conclusion == "Tie!") {
+            i--;
+            console.log("It's tie!");
+            continue;
+        }
 
-const playerSelection = "Rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+        if (conclusion == "Win!") {
+            console.log("You win!");
+            numberOfWins++;
+        }
+        else {
+            console.log("You lose!");
+        }
+        
+    }
+
+    console.log("You win " + numberOfWins + " time(s), you lose " + (5 - numberOfWins) + " time(s).");
+}
+
+game();
